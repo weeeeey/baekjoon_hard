@@ -12,6 +12,8 @@ O(NlogN)
 
 # 이후 dp를 탐색하면서 최장길이에 맞춰서 순서대로 트래킹하면 됨.
 
+# 계속 92퍼에서 틀려서 왜인가 했더니만 temp에 넣는 첫값이 1e9여서 틀린거였음
+# 최소값이 -1e9 이기 떄문에 temp 첫값은 -1e9-1
 from sys import stdin
 from bisect import bisect_left
 input = stdin.readline 
@@ -21,7 +23,7 @@ n = int(input())
 arr = list(map(int,input().rsplit()))
 
 dp = [1]*(n)
-temp = [-INF]
+temp = [-INF-1]
 longest = 0
 for i in range(n):
   if temp[-1]<arr[i]:
